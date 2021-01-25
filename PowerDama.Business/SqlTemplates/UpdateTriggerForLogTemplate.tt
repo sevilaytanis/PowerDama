@@ -1,0 +1,37 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+USE <#= DBName #>;
+GO
+
+CREATE TRIGGER [<#= SchemaName #>].[<#= LogDBName #>_tru_<#= TableName #>] ON [<#= SchemaName #>].[<#= TableName #>] FOR UPDATE
+AS        
+
+DECLARE @TimeTo AS DATETIME = GETDATE()
+
+UPDATE T SET
+	T.EndDate = @TimeTo
+FROM [<#= LogDBName #>].[<#= SchemaName #>].[<#= LogTableName #>] AS T
+INNER JOIN DELETED AS D ON T.<#= PrimaryColumnName #> = D.<#= PrimaryColumnName #>
+WHERE @TimeTo BETWEEN T.BeginDate AND T.EndDate
+
+IF @@ERROR <> 0
+BEGIN
+	RAISERROR ('Error occured while logging <#= TableName #> to <#= LogDBName #>...', 16, 1)
+	RETURN
+END
+
+SET @TimeTo = DATEADD(ms, 3, @TimeTo)
+
+INSERT INTO [<#= LogDBName #>].[<#= SchemaName #>].[<#= LogTableName #>]
+SELECT @TimeTo, '20500101', * FROM INSERTED
+
+IF @@ERROR <> 0
+BEGIN
+	RAISERROR ('Error occured while logging <#= TableName #> to <#= LogDBName #>...', 16, 1)
+	RETURN
+END
+GO

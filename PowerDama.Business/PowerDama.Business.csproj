@@ -1,0 +1,82 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PowerDama.Repository\PowerDama.Repository.csproj" />
+    <ProjectReference Include="..\PowerDama.Types\PowerDama.Types.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SqlTemplates\AlterTableTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AlterTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="SqlTemplates\CreateTableTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CreateTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="SqlTemplates\DeleteTriggerForLogTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DeleteTriggerForLogTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="SqlTemplates\InsertTriggerForLogTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InsertTriggerForLogTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="SqlTemplates\SelectTableColumnMetaDataTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SelectTableColumnMetaDataTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="SqlTemplates\UpdateTriggerForLogTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UpdateTriggerForLogTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SqlTemplates\AlterTableTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AlterTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="SqlTemplates\CreateTableTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CreateTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="SqlTemplates\DeleteTriggerForLogTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DeleteTriggerForLogTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="SqlTemplates\InsertTriggerForLogTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>InsertTriggerForLogTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="SqlTemplates\SelectTableColumnMetaDataTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectTableColumnMetaDataTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="SqlTemplates\UpdateTriggerForLogTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpdateTriggerForLogTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

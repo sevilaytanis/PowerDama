@@ -1,0 +1,67 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="PowerDama.Types.DataGovernance" #>
+
+<#
+if (!string.IsNullOrEmpty(PrimaryKeyDropScript)){ #><#= PrimaryKeyDropScript #><#}
+foreach (var item in ColumnList) // ColumnList is declared in AlterTableTemplateCode.cs
+{ 
+	if(item.Command == SqlScriptTemplateItem.ScriptCommand.AddColumn)
+	{
+#>
+IF NOT EXISTS (SELECT TOP 1 1 FROM <#= DBName #>.sys.columns WHERE object_id = OBJECT_ID(N'[<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>]') AND name = '<#= item.ColumnName #>')
+BEGIN
+	ALTER TABLE [<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>] ADD [<#= item.ColumnName #>] <#= item.FullDefinition #>;
+END
+<#
+	}
+	else if(item.Command == SqlScriptTemplateItem.ScriptCommand.DropColumn)
+	{
+#>
+IF EXISTS (SELECT TOP 1 1 FROM <#= DBName #>.sys.columns WHERE object_id = OBJECT_ID(N'[<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>]') AND name = '<#= item.ColumnName #>')
+BEGIN
+	ALTER TABLE [<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>] DROP COLUMN [<#= item.ColumnName #>];
+END
+<#
+	}
+	else if(item.Command == SqlScriptTemplateItem.ScriptCommand.DropPrimaryColumn)
+	{
+#>
+IF EXISTS (SELECT TOP 1 1 FROM <#= DBName #>.sys.columns WHERE object_id = OBJECT_ID(N'[<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>]') AND name = '<#= item.ColumnName #>')
+BEGIN
+	DECLARE @C VARCHAR(100)
+	SELECT @C = CONSTRAINT_NAME FROM <#= DBName #>.INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE CONSTRAINT_TYPE = 'PRIMARY KEY' AND TABLE_SCHEMA = '<#= SchemaName #>' AND TABLE_NAME = '<#= TableName #>'
+	IF @C IS NOT NULL
+	BEGIN
+		EXEC('ALTER TABLE [<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>] DROP CONSTRAINT ' + @C)
+	END
+
+	ALTER TABLE [<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>] DROP COLUMN [<#= item.ColumnName #>];
+END
+<#
+	}
+	else if(item.Command == SqlScriptTemplateItem.ScriptCommand.AlterColumn)
+	{
+#>
+ALTER TABLE [<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>] ALTER COLUMN [<#= item.ColumnName #>] <#= item.FullDefinition #>;
+<#
+	}
+	else if(item.Command == SqlScriptTemplateItem.ScriptCommand.ReNameColumn)
+	{
+#>
+EXEC sp_rename '[<#= DBName #>].[<#= SchemaName #>].[<#= TableName #>].<#= item.ColumnName #>', '<#= item.NewColumnName #>', 'COLUMN';
+GO
+<#
+	}
+#>
+
+<#
+} // end of foreach
+if (!string.IsNullOrEmpty(PrimaryKeyScript)){ #>
+GO
+<#= PrimaryKeyScript #><#}
+#>
+GO
