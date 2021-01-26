@@ -18,7 +18,7 @@ namespace PowerDama.Business.SqlTemplates
     /// Class to produce the template output
     /// </summary>
 
-#line 1 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 1 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class CreateTableTemplate : CreateTableTemplateBase
     {
@@ -30,28 +30,28 @@ namespace PowerDama.Business.SqlTemplates
         {
             this.Write("\r\nCREATE TABLE [");
 
-#line 7 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 7 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DBName));
 
 #line default
 #line hidden
             this.Write("].[");
 
-#line 7 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 7 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SchemaName));
 
 #line default
 #line hidden
             this.Write("].[");
 
-#line 7 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 7 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TableName));
 
 #line default
 #line hidden
             this.Write("]\r\n(\r\n");
 
-#line 9 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 9 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
             for (int i = 0; i < ColumnList.Count; i++) // ColumnList is declared in CreateTableTemplateCode.cs
             {
 
@@ -59,20 +59,20 @@ namespace PowerDama.Business.SqlTemplates
 #line hidden
                 this.Write("   [");
 
-#line 11 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 11 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
                 this.Write(this.ToStringHelper.ToStringWithCulture(ColumnList[i].ColumnName));
 
 #line default
 #line hidden
                 this.Write("] ");
 
-#line 11 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 11 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
                 this.Write(this.ToStringHelper.ToStringWithCulture(ColumnList[i].FullDefinition));
 
 #line default
 #line hidden
 
-#line 11 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 11 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
                 if (i < (ColumnList.Count - 1))
                 {
 
@@ -80,13 +80,13 @@ namespace PowerDama.Business.SqlTemplates
 #line hidden
                     this.Write(",\r\n ");
 
-#line 12 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 12 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
                 }
 
 #line default
 #line hidden
 
-#line 13 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 13 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
             }
             if (!string.IsNullOrEmpty(PrimaryKeyScript))
             {
@@ -94,13 +94,13 @@ namespace PowerDama.Business.SqlTemplates
 #line default
 #line hidden
 
-#line 14 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 14 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
                 this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyScript));
 
 #line default
 #line hidden
 
-#line 14 "D:\Work\BOA.BCP\Dev\BCP\BCP\DataGovernance\Templates\CreateTableTemplate.tt"
+#line 14 "D:\DataGovernance\PowerDama\PowerDama.Business\SqlTemplates\CreateTableTemplate.tt"
             }
 
 

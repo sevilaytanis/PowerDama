@@ -155,9 +155,64 @@ namespace PowerDama.Business.DataGovernance
             return status;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="columns"></param>
+        /// <param name="isLogTable"></param>
+        /// <returns></returns>
         public String CreateTableScript(Table request, ObservableCollection<ColumnList> columns, bool isLogTable = false)
         {
-            throw new NotImplementedException();
+            var sqlScriptItemList = new List<SqlScriptTemplateItem>();
+            List<string> primaryKeyColumns = null;
+            string primaryKeyScript = null;
+
+            foreach (var column in columns.OrderBy(x => x.Order))
+            {
+                var sqlScriptItem = new SqlScriptTemplateItem()
+                {
+                    Command = ScriptCommand.CreateTable,
+                    ColumnName = column.ColumnName,
+                    FullDefinition = SetFullDefinition(column, ScriptCommand.CreateTable, isLogTable)
+                };
+
+                if (column.IsKey == 1)
+                {
+                    if (primaryKeyColumns == null)
+                        primaryKeyColumns = new List<string>();
+
+                    primaryKeyColumns.Add(column.ColumnName);
+                }
+                sqlScriptItemList.Add(sqlScriptItem);
+            }
+
+            if (primaryKeyColumns != null)
+            {
+                string _primaryKeyColumn = string.Join(", ", primaryKeyColumns);
+
+                if (isLogTable)
+                {
+                    _primaryKeyColumn = "";
+
+                    if (primaryKeyColumns.Count > 2)
+                    {
+                        for (int i = 2; i <= primaryKeyColumns.Count - 1; i++)
+                        {
+                            _primaryKeyColumn += string.Concat(primaryKeyColumns[i], " ASC, ");
+                        }
+                    }
+
+                    _primaryKeyColumn += string.Concat(primaryKeyColumns[0], " ASC, ");
+                    _primaryKeyColumn += string.Concat(primaryKeyColumns[1], " ASC");
+                }
+
+                primaryKeyScript = string.Format(PRIMARY_KEY_CREATE_SCRIPT, Environment.NewLine, request.TableName, _primaryKeyColumn, (isLogTable) ? "CLUSTERED" : "");
+            }
+
+            var createTableTemplate = new SqlTemplates.CreateTableTemplate(request.Dbname, request.SchemaName, request.TableName, sqlScriptItemList, primaryKeyScript);
+
+            return createTableTemplate.TransformText();
         }
 
         public String CreateTriggerScriptsForLog(Table table, Table logTable, string primaryColumnName)

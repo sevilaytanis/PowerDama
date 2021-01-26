@@ -2,34 +2,20 @@
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Collections.Generic" #> 
 
 USE <#= DBName #>;
-GO
+GO 
 
-CREATE TRIGGER [<#= SchemaName #>].[<#= LogDBName #>_trd_<#= TableName #>] ON [<#= SchemaName #>].[<#= TableName #>] FOR DELETE
-AS        
-
-DECLARE @TimeTo AS DATETIME = GETDATE()
-
-UPDATE T SET
-	T.EndDate = @TimeTo
-FROM [<#= LogDBName #>].[<#= SchemaName #>].[<#= LogTableName #>] AS T
-INNER JOIN DELETED AS D ON T.<#= PrimaryColumnName #> = D.<#= PrimaryColumnName #>
-WHERE @TimeTo BETWEEN T.BeginDate AND T.EndDate
-
-IF @@ERROR <> 0
-BEGIN
-	RAISERROR ('Error occured while logging <#= TableName #> to <#= LogDBName #>...', 16, 1)
-	RETURN
-END
+CREATE TRIGGER [<#= SchemaName #>].[<#= LogDBName #>_tri_<#= TableName #>] ON [<#= SchemaName #>].[<#= TableName #>] FOR INSERT
+AS       
 
 INSERT INTO [<#= LogDBName #>].[<#= SchemaName #>].[<#= LogTableName #>]
-SELECT @TimeTo, @TimeTo, * FROM DELETED
- 
+SELECT GETDATE(), '20500101', * FROM INSERTED
+
 IF @@ERROR <> 0
 BEGIN
-	RAISERROR ('Error occured while logging <#= TableName #> to <#= LogDBName #>...', 16, 1)
-	RETURN
+       RAISERROR ('Error occured while logging <#= TableName #> to <#= LogDBName #>...', 16, 1)
+       RETURN
 END
 GO
