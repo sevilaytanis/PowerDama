@@ -11,7 +11,7 @@ using System.Linq;
 namespace PowerDama.Business.DataGovernance
 {
     /// <summary>
-    /// 
+    ///  
     /// </summary>
     public class WorkGroupRepository : IWorkGroupRepository
     {
