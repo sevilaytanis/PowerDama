@@ -47,6 +47,12 @@ namespace PowerDama.Core.Helpers
             return connectionString;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serverName"></param>
+        /// <param name="databaseName"></param>
+        /// <returns></returns>
         internal static string PostgreBaseConnectionString(string serverName, string databaseName)
         {
             var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
@@ -57,6 +63,12 @@ namespace PowerDama.Core.Helpers
             return connectionString;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serverName"></param>
+        /// <param name="databaseName"></param>
+        /// <returns></returns>
         internal static string OracleBaseConnectionString(string serverName, string databaseName)
         {
             var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
