@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>PowerDama.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{6796e129-99eb-400f-af3b-4a831808a69b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>PowerDama.Database</RootNamespace>
+    <AssemblyName>PowerDama.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="DTG\" />
+    <Folder Include="DTG\Tables\" />
+    <Folder Include="DTG\Views\" />
+    <Folder Include="DTG\Stored Procedures\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="DTG\Tables\UpdateItemAuthorizationForTableDDLScript.sql" />
+    <Build Include="DTG\Tables\TermTextApprovalJournal.sql" />
+    <Build Include="DTG\Tables\TermRule.sql" />
+    <Build Include="DTG\Tables\TermRecommendation.sql" />
+    <Build Include="DTG\Tables\TermDataMaskWhiteList.sql" />
+    <Build Include="DTG\Tables\TermDataMask.sql" />
+    <Build Include="DTG\Tables\Term.sql" />
+    <Build Include="DTG\Tables\TemplateType.sql" />
+    <Build Include="DTG\Tables\TableUseStatistics.sql" />
+    <Build Include="DTG\Tables\TableDraft.sql" />
+    <Build Include="DTG\Tables\TableDesignPackage.sql" />
+    <Build Include="DTG\Tables\TableDataMaskException.sql" />
+    <Build Include="DTG\Tables\TableColumnProperty.sql" />
+    <Build Include="DTG\Tables\TableColumnDraft.sql" />
+    <Build Include="DTG\Tables\TableColumnDataMaskDetail.sql" />
+    <Build Include="DTG\Tables\TableColumnDataMaskBFix.sql" />
+    <Build Include="DTG\Tables\TableColumnDataMask.sql" />
+    <Build Include="DTG\Tables\TableColumn.sql" />
+    <Build Include="DTG\Tables\Table.sql" />
+    <Build Include="DTG\Tables\Status.sql" />
+    <Build Include="DTG\Tables\Sensitivity.sql" />
+    <Build Include="DTG\Tables\ScriptInventory.sql" />
+    <Build Include="DTG\Tables\ScriptDefinition.sql" />
+    <Build Include="DTG\Tables\PropertyValue.sql" />
+    <Build Include="DTG\Tables\Property.sql" />
+    <Build Include="DTG\Tables\Parameter.sql" />
+    <Build Include="DTG\Tables\Integrity.sql" />
+    <Build Include="DTG\Tables\InformationType.sql" />
+    <Build Include="DTG\Tables\Entity.sql" />
+    <Build Include="DTG\Tables\DataTypeMatch.sql" />
+    <Build Include="DTG\Tables\DataTypeLanguage.sql" />
+    <Build Include="DTG\Tables\DataType.sql" />
+    <Build Include="DTG\Tables\DatabaseLocation.sql" />
+    <Build Include="DTG\Tables\CustomerDataRequestDetail.sql" />
+    <Build Include="DTG\Tables\CustomerDataRequest.sql" />
+    <Build Include="DTG\Tables\ColumnRule.sql" />
+    <Build Include="DTG\Tables\Attribute.sql" />
+    <Build Include="DTG\Tables\Accessibility.sql" />
+    <Build Include="DTG\Views\vParameter.sql" />
+    <Build Include="DTG\Stored Procedures\upd_CustomerDataRequestDetail.sql" />
+    <Build Include="DTG\Stored Procedures\del_CustomerDataRequest.sql" />
+    <Build Include="DTG\Stored Procedures\upd_CustomerDataRequest.sql" />
+    <Build Include="DTG\Stored Procedures\del_ColumnRule.sql" />
+    <Build Include="DTG\Stored Procedures\upd_ColumnRule.sql" />
+    <Build Include="DTG\Stored Procedures\upd_BaseTermRule.sql" />
+    <Build Include="DTG\Stored Procedures\tsk_TableColumnDataMaskBFix.sql" />
+    <Build Include="DTG\Stored Procedures\tsk_TableColumnDataMask.sql" />
+    <Build Include="DTG\Stored Procedures\tsk_LinkLogTable.sql" />
+    <Build Include="DTG\Stored Procedures\tsk_CountUpTheTermUse.sql" />
+    <Build Include="DTG\Stored Procedures\sel_WorkGroup.sql" />
+    <Build Include="DTG\Stored Procedures\sel_vUser.sql" />
+    <Build Include="DTG\Stored Procedures\sel_UpdateItemAuthorizationForTableDDLScript.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermWithDataMaskTypeByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermTextApprovalJournalByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermTextApprovalJournal.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermTableRelationByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermRules.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermRuleByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermRecommendationByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermHasLinkedTable.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermFromTableReferenceColumn.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermFromTableKeyColumn.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermDataMaskByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermCodeByModuleId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByNameAndType.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByKey.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByInformationType.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByColumnsWithPropertyValues.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByColumnsForTextReview.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByColumnsForBusinessUnit.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByColumnsForBusinessDictionary.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByColumns2.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermByColumnName.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TermBase.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Term.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TemplateType.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TemplateDataType.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableVersion.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableTermByReferenceColumnName.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableScript.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableReferenceColumnByTableTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableNameFromCatalog.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableKeyColumnByTableTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableFromSystemByExistenceInCatalog.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableFromSystem.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableDraftByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableDraftByStatus.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableDraftByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableDraft.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableDesignPackageByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableDataMaskExceptionByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableColumnProperty.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableColumnInformationSecurityByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableColumnDraftByTableId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableColumnDataMask.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableColumnByTableId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableColumnByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableColumn.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableByKey.sql" />
+    <Build Include="DTG\Stored Procedures\sel_TableByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Table.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Status.sql" />
+    <Build Include="DTG\Stored Procedures\sel_SensitivityForBusinessDictionary.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Sensitivity.sql" />
+    <Build Include="DTG\Stored Procedures\sel_ScriptInventory.sql" />
+    <Build Include="DTG\Stored Procedures\sel_ScriptDefinition.sql" />
+    <Build Include="DTG\Stored Procedures\sel_SchemaNameFromCatalog.sql" />
+    <Build Include="DTG\Stored Procedures\sel_RecommendedTextCountByUserName.sql" />
+    <Build Include="DTG\Stored Procedures\sel_PropertyByColumns.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Property.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Parameter.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Module.sql" />
+    <Build Include="DTG\Stored Procedures\sel_IntegrityForBusinessDictionary.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Integrity.sql" />
+    <Build Include="DTG\Stored Procedures\sel_InformationType.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DTGParameter.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DBNameFromCatalog.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DataTypeLanguage.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DataTypeByKey.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DataType.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DataTemplate.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DataMaskSchemaList.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DataInventoryManagement.sql" />
+    <Build Include="DTG\Stored Procedures\sel_DatabaseObjectByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_CustomerDataRequestDetail.sql" />
+    <Build Include="DTG\Stored Procedures\sel_CustomerDataRequest.sql" />
+    <Build Include="DTG\Stored Procedures\sel_ColumnRuleByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\sel_ColumnRule.sql" />
+    <Build Include="DTG\Stored Procedures\sel_CheckTableDesign.sql" />
+    <Build Include="DTG\Stored Procedures\sel_BusinessDomain.sql" />
+    <Build Include="DTG\Stored Procedures\sel_ApprovedTable.sql" />
+    <Build Include="DTG\Stored Procedures\sel_AccessibilityForBusinessDictionary.sql" />
+    <Build Include="DTG\Stored Procedures\sel_Accessibility.sql" />
+    <Build Include="DTG\Stored Procedures\ins_UpdateItemAuthorizationForTableDDLScript.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TermTextApprovalJournal.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TermRules.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TermRule.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TermRecommendation.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TermForBusinessCatalog.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TermDataMask.sql" />
+    <Build Include="DTG\Stored Procedures\ins_Term.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TableUseStatistics.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TableDraft.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TableDesignPackage.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TableDataMaskException.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TableColumnProperty.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TableColumnDraft.sql" />
+    <Build Include="DTG\Stored Procedures\ins_TableColumn.sql" />
+    <Build Include="DTG\Stored Procedures\ins_Table.sql" />
+    <Build Include="DTG\Stored Procedures\upd_ValidateByCustomerRightsUnit.sql" />
+    <Build Include="DTG\Stored Procedures\ins_ScriptInventory.sql" />
+    <Build Include="DTG\Stored Procedures\upd_ValidateByBusinessUnit.sql" />
+    <Build Include="DTG\Stored Procedures\ins_ScriptDefinition.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TermValidateByBusinessUnit.sql" />
+    <Build Include="DTG\Stored Procedures\ins_PropertyValue.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TermTransfer.sql" />
+    <Build Include="DTG\Stored Procedures\ins_Parameter.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TermRules.sql" />
+    <Build Include="DTG\Stored Procedures\ins_Entity.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TermRule.sql" />
+    <Build Include="DTG\Stored Procedures\ins_DataTypeMatch.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TermRecommendation.sql" />
+    <Build Include="DTG\Stored Procedures\ins_DataType.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TermDataMask.sql" />
+    <Build Include="DTG\Stored Procedures\ins_CustomerDataRequestDetail.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TermBySensitivity.sql" />
+    <Build Include="DTG\Stored Procedures\ins_CustomerDataRequest.sql" />
+    <Build Include="DTG\Stored Procedures\upd_Term.sql" />
+    <Build Include="DTG\Stored Procedures\ins_Attribute.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableVersion.sql" />
+    <Build Include="DTG\Stored Procedures\del_UpdateItemAuthorizationForTableDDLScript.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableDraft.sql" />
+    <Build Include="DTG\Stored Procedures\del_TermRules.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableDesignPackage.sql" />
+    <Build Include="DTG\Stored Procedures\del_Term.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableColumnSubsetCriteria.sql" />
+    <Build Include="DTG\Stored Procedures\del_TableDraft.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableColumnSecurity.sql" />
+    <Build Include="DTG\Stored Procedures\del_TableDataMaskException.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableColumnProperty.sql" />
+    <Build Include="DTG\Stored Procedures\del_TableColumnSubsetCriteria.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableColumnInformationSecurity.sql" />
+    <Build Include="DTG\Stored Procedures\del_TableColumnProperty.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableColumnDraftByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\del_TableColumnDraft.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableColumnByTermId.sql" />
+    <Build Include="DTG\Stored Procedures\del_TableColumnDataMask.sql" />
+    <Build Include="DTG\Stored Procedures\upd_TableByTestVersion.sql" />
+    <Build Include="DTG\Stored Procedures\del_TableColumn.sql" />
+    <Build Include="DTG\Stored Procedures\upd_Table.sql" />
+    <Build Include="DTG\Stored Procedures\del_Table.sql" />
+    <Build Include="DTG\Stored Procedures\upd_ScriptInventory.sql" />
+    <Build Include="DTG\Stored Procedures\del_ScriptInventory.sql" />
+    <Build Include="DTG\Stored Procedures\upd_ScriptDefinition.sql" />
+    <Build Include="DTG\Stored Procedures\del_ScriptDefinition.sql" />
+    <Build Include="DTG\Stored Procedures\upd_PropertyValue.sql" />
+    <Build Include="DTG\Stored Procedures\del_PropertyValue.sql" />
+    <Build Include="DTG\Stored Procedures\upd_Parameter.sql" />
+    <Build Include="DTG\Stored Procedures\del_CustomerDataRequestDetail.sql" />
+    <Build Include="Security\DTG.sql" />
+  </ItemGroup>
+</Project>

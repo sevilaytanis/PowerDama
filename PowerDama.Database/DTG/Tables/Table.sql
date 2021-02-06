@@ -1,0 +1,25 @@
+﻿CREATE TABLE [DTG].[Table] (
+    [TableId]          INT           IDENTITY (1, 1) NOT NULL,
+    [DBName]           VARCHAR (50)  NOT NULL,
+    [SchemaName]       VARCHAR (20)  NOT NULL,
+    [TableName]        VARCHAR (50)  NOT NULL,
+    [TermId]           INT           NULL,
+    [IsEntity]         TINYINT       CONSTRAINT [DF_Table_IsEntity] DEFAULT ((0)) NULL,
+    [Description]      VARCHAR (500) NULL,
+    [Status]           TINYINT       CONSTRAINT [DF_Table_Status] DEFAULT ((0)) NOT NULL,
+    [UserName]         VARCHAR (10)  NULL,
+    [HostName]         VARCHAR (20)  NULL,
+    [SystemDate]       DATETIME      NULL,
+    [UpdateUserName]   VARCHAR (10)  NULL,
+    [UpdateHostName]   VARCHAR (20)  NULL,
+    [UpdateSystemDate] DATETIME      NULL,
+    [HostIP]           VARCHAR (15)  NULL,
+    [DevVersion]       TINYINT       CONSTRAINT [DF_Table_DevVersion] DEFAULT ((1)) NOT NULL,
+    [TestVersion]      TINYINT       CONSTRAINT [DF_Table_TestVersion] DEFAULT ((0)) NOT NULL,
+    [PrepVersion]      TINYINT       CONSTRAINT [DF_Table_PrepVersion] DEFAULT ((0)) NOT NULL,
+    [ProdVersion]      TINYINT       CONSTRAINT [DF_Table_ProdVersion] DEFAULT ((0)) NOT NULL,
+    [LogTableName]     VARCHAR (100) NULL,
+    [TableType]        TINYINT       NULL,
+    CONSTRAINT [PK_Table] PRIMARY KEY CLUSTERED ([TableId] ASC) WITH (FILLFACTOR = 95)
+);
+

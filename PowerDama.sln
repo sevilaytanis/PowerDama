@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerDama.Management", "Pow
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerDama.Core", "PowerDama.Core\PowerDama.Core.csproj", "{2D917CC5-E0FA-432F-B7D5-D0E40AC352F5}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PowerDama.Database", "PowerDama.Database\PowerDama.Database.sqlproj", "{6796E129-99EB-400F-AF3B-4A831808A69B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,12 @@ Global
 		{2D917CC5-E0FA-432F-B7D5-D0E40AC352F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D917CC5-E0FA-432F-B7D5-D0E40AC352F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D917CC5-E0FA-432F-B7D5-D0E40AC352F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6796E129-99EB-400F-AF3B-4A831808A69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6796E129-99EB-400F-AF3B-4A831808A69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6796E129-99EB-400F-AF3B-4A831808A69B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6796E129-99EB-400F-AF3B-4A831808A69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6796E129-99EB-400F-AF3B-4A831808A69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6796E129-99EB-400F-AF3B-4A831808A69B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
