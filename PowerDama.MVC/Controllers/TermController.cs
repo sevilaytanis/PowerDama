@@ -1,15 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace PowerDama.MVC.Controllers
 {
     public class TermController : Controller
     {
-        [Route("terms")]
+        [Route("termsdark")]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [Route("termlist")]
+        public IActionResult Term()
+        {
+            return View();
+        }
+
+        [Route("terms")]
+        public IActionResult TermFilter()
         {
             return View();
         }

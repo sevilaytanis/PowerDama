@@ -23,26 +23,26 @@ namespace PowerDama.MVC
 
             #region Auth
 
-            string SECRET_KEY = Configuration.GetSection("Jwt").GetSection("Key").Value;
-            SymmetricSecurityKey SIGNING_KEY = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SECRET_KEY));
-            string jwtBearer = Configuration.GetSection("Jwt").GetSection("Bearer").Value;
+            //string SECRET_KEY = Configuration.GetSection("Jwt").GetSection("Key").Value;
+            //SymmetricSecurityKey SIGNING_KEY = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SECRET_KEY));
+            //string jwtBearer = Configuration.GetSection("Jwt").GetSection("Bearer").Value;
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = jwtBearer;
-                options.DefaultChallengeScheme = jwtBearer;
-            }).AddJwtBearer(jwtBearer, jwt => 
-            {
-                jwt.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    IssuerSigningKey = SIGNING_KEY,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidIssuer = Configuration.GetSection("Jwt").GetSection("Issuer").Value,
-                    ValidAudience = Configuration.GetSection("Jwt").GetSection("Audience").Value,
-                    ValidateLifetime = true
-                };
-            });
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = jwtBearer;
+            //    options.DefaultChallengeScheme = jwtBearer;
+            //}).AddJwtBearer(jwtBearer, jwt => 
+            //{
+            //    jwt.TokenValidationParameters = new TokenValidationParameters()
+            //    {
+            //        IssuerSigningKey = SIGNING_KEY,
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidIssuer = Configuration.GetSection("Jwt").GetSection("Issuer").Value,
+            //        ValidAudience = Configuration.GetSection("Jwt").GetSection("Audience").Value,
+            //        ValidateLifetime = true
+            //    };
+            //});
 
             #endregion
         }
