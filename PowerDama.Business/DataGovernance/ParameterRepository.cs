@@ -137,7 +137,7 @@ namespace PowerDama.Business.DataGovernance
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public BaseResponse<DTGParameter> InsertDTGParameter(DTGParameter request)
+        public BaseResponse<DTGParameter> AddDTGParameter(DTGParameter request)
         {
             #region (Dapper) Stored Procedure parameters
             var parameters = new DynamicParameters(new

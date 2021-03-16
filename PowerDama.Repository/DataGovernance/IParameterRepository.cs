@@ -34,6 +34,6 @@ namespace PowerDama.Repository.DataGovernance
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        BaseResponse<DTGParameter> InsertDTGParameter(DTGParameter request);
+        BaseResponse<DTGParameter> AddDTGParameter(DTGParameter request);
     }
 }
