@@ -19,7 +19,7 @@ namespace PowerDama.Repository.DataGovernance
         /// <param name="endDate"></param>
         /// <param name="languageId"></param>
         /// <returns></returns>
-        BaseResponse<List<TableDesignPackage>> GetColumns(TableDesignPackage item, DateTime? startDate, DateTime? endDate, byte languageId);
+        BaseResponse<List<TableDesignPackage>> GetByColumns(TableDesignPackage item, DateTime? startDate, DateTime? endDate, byte languageId);
 
         /// <summary>
         /// 
@@ -38,5 +38,12 @@ namespace PowerDama.Repository.DataGovernance
         /// <param name="sqlScript"></param>
         /// <returns></returns>
         BaseResponse<Int32> ExecuteTableDesignScript(string sqlScript);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tableDesignPackageId"></param>
+        /// <returns></returns>
+        BaseResponse<TableDesignPackage> GetById(int tableDesignPackageId);
     }
 }

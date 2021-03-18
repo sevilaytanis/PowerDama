@@ -312,7 +312,7 @@ namespace PowerDama.Business.DataGovernance
         /// <param name="endDate"></param>
         /// <param name="languageId"></param>
         /// <returns></returns>
-        public BaseResponse<List<TableDesignPackage>> GetColumns(TableDesignPackage item, DateTime? startDate, DateTime? endDate, byte languageId)
+        public BaseResponse<List<TableDesignPackage>> GetByColumns(TableDesignPackage item, DateTime? startDate, DateTime? endDate, byte languageId)
         {
             #region (Dapper) Stored Procedure parameters
             var parameters = new DynamicParameters(new
@@ -405,6 +405,54 @@ namespace PowerDama.Business.DataGovernance
             {
                 #region Execute to Stored Procedure and return value by Dapper
                 data.Value = connection.db.Query<TableDesignPackage>("DTG.upd_TableDesignPackage", parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                data.Success = true;
+                data.InfoMessage = Messages.Successfull;
+                #endregion
+
+                #region close to DB
+                connection.db.Close();
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                #region close to DB
+                connection.db.Close();
+                #endregion
+
+                #region Write Log to text file
+                LogHelper.FileLog(ex.Message);
+                #endregion
+
+                #region return Exception
+                data.Success = false;
+                data.ErrorMessage = ex.Message;
+                #endregion
+            }
+            return data;
+        }
+
+        public BaseResponse<TableDesignPackage> GetById(int tableDesignPackageId)
+        {
+            #region (Dapper) Stored Procedure parameters
+            var parameters = new DynamicParameters(new
+            {
+                TableDesignPackageId = tableDesignPackageId
+            });
+            #endregion
+
+            #region return object value
+            var data = new BaseResponse<TableDesignPackage>();
+            data.Value = new TableDesignPackage();
+            #endregion
+
+            #region connect to DB
+            var connection = new ConnectionHelper(Server.Mssql, Database.PowerDama);
+            #endregion
+
+            try
+            {
+                #region Execute to Stored Procedure and return value by Dapper
+                data.Value = connection.db.Query<TableDesignPackage>("DTG.upd_TableDesignPackageById", parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
                 data.Success = true;
                 data.InfoMessage = Messages.Successfull;
                 #endregion

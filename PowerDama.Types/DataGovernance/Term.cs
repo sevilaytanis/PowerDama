@@ -12,15 +12,15 @@ namespace PowerDama.Types.DataGovernance
         public string DescriptionEn { get; set; }
         public int? ModuleId { get; set; }
         public byte Type { get; set; }
-        public int? DataOwner { get; set; }
+        public string DataOwner { get; set; }
         public int? DataOwnerId { get; set; }
-        public int? DataManager { get; set; }
+        public string DataManager { get; set; }
         public int? DataManagerId { get; set; }
-        public int? DataSteward { get; set; }
+        public string DataSteward { get; set; }
         public int? DataStewardId { get; set; }
         public int? BaseTermId { get; set; }
-        public byte? Sensitivity { get; set; }
-        public byte? SensitivityId { get; set; }
+        public string Sensitivity { get; set; }
+        public int? SensitivityId { get; set; }
         public string UserName { get; set; }
         public string HostName { get; set; }
         public DateTime? SystemDate { get; set; }
@@ -38,10 +38,10 @@ namespace PowerDama.Types.DataGovernance
         public byte? ValidatedByCustomerRightsUnit { get; set; }
         public int? Level1Domain { get; set; }
         public int? Level2Domain { get; set; }
-        public byte? Accessibility { get; set; }
-        public byte? AccessibilityId { get; set; }
-        public byte? Integrity { get; set; }
-        public byte? IntegrityId { get; set; }
+        public string Accessibility { get; set; }
+        public int? AccessibilityId { get; set; }
+        public string Integrity { get; set; }
+        public int? IntegrityId { get; set; }
         public byte? IsActive { get; set; }
         public byte LanguageId { get; set; }
         public byte InformationTypeId { get; set; }

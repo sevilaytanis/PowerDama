@@ -154,7 +154,7 @@ namespace PowerDama.Business.DataGovernance
             #region (Dapper) Stored Procedure parameters
             var parameters = new DynamicParameters(new
             {
-                LanguageId = request.LanguageId
+                LanguageId = 1//request.LanguageId
             });
             #endregion
 
