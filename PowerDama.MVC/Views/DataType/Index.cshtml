@@ -1,74 +1,57 @@
-﻿
+﻿@model List<PowerDama.MVC.Models.DataGovernance.DataTypeVM>
 @{
-    Layout = "~/Views/Shared/_WhiteLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="layout-px-spacing">
 
-<div class="layout-px-spacing">
-
-    <div class="row layout-top-spacing layout-spacing">
-        <div class="col-lg-12">
-            <div class="statbox widget box box-shadow">
-                <div class="widget-header">
-                    <div class="row">
-                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                            <h4>Column Filter</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget-content widget-content-area">
-                    <div class="table-responsive mb-4">
-                        <table id="column-filter" class="table">
+        <div class="row layout-spacing">
+            <div class="col-lg-12">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-content widget-content-area">
+                        <table id="style-3" class="table style-3  table-hover">
                             <thead>
                                 <tr>
-                                    <th class="checkbox-column"> Record No. </th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th class="text-center">Action</th>
+                                    <th class="checkbox-column text-center"> Id </th>
+                                    <th>Name</th>
+                                    <th>Value</th>
+                                    <th class="text-center dt-no-sorting">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="checkbox-column"> 1 </td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>johndoe@yahoo.com</td>
-                                    <td><span class="shadow-none badge badge-primary">Approved</span></td>
-                                    <td class="text-center"><button class="btn btn-outline-primary">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td class="checkbox-column"> 2 </td>
-                                    <td>Andy</td>
-                                    <td>King</td>
-                                    <td>andyking@gmail.com</td>
-                                    <td><span class="shadow-none badge badge-warning">Pending</span></td>
-                                    <td class="text-center"><button class="btn btn-outline-primary">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td class="checkbox-column"> 3 </td>
-                                    <td>Lisa</td>
-                                    <td>Doe</td>
-                                    <td>lisadoe@live.com</td>
-                                    <td><span class="shadow-none badge badge-danger">Suspended</span></td>
-                                    <td class="text-center"><button class="btn btn-outline-primary">View</button></td>
-                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="checkbox-column text-center"> @item.DataTypeId </td>
+
+                                        <td>@item.Name</td>
+                                        <td>@item.Value</td>
+                                        <td class="text-center">
+                                        <ul class="table-controls">
+                                            <li>
+                                                <a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top"                     title="" data-original-title="Edit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-                           linejoin="round" class="feather feather-edit-2 p-1 br-6 mb-1">
+                                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top"                     title="" data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24"                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-                  linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-6 mb-1">
+                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                        </path>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        </td>
+                                    </tr>
+                                }
+
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th class="checkbox-column"></th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-</div>
+        
